@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Musi ❤️</title>
+  <style>
+    body {
+      background-color: lavender;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .heart {
+      font-size: 100px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .heart:hover {
+      transform: scale(1.2);
+    }
+
+    .question-box {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .question {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #6a0dad;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #ff4d4d;
+      color: white;
+      position: relative;
+    }
+
+    .response {
+      margin-top: 30px;
+      font-size: 24px;
+      text-align: center;
+      max-width: 90%;
+      color: #4b0082;
+    }
+
+    .smiley {
+      font-size: 40px;
+      margin-top: 10px;
+    }
+
+    #loveImage {
+      margin-top: 20px;
+      max-width: 300px;
+      border-radius: 15px;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+    <h1>Pop the Heart</h1>
+  <div class="heart" id="heart">💖</div>
+
+  <div class="question-box" id="questionBox">
+    <div class="question">Musi, do you love me?</div>
+    <div class="buttons">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+    <div class="response" id="response"></div>
+    <img id="loveImage" src="./musi.jpeg" alt="Musi and You" />
+  </div>
+
+  <script>
+    const heart = document.getElementById("heart");
+    const questionBox = document.getElementById("questionBox");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const response = document.getElementById("response");
+    const loveImage = document.getElementById("loveImage");
+
+    heart.addEventListener("click", () => {
+      questionBox.style.display = "flex";
+      heart.style.display = "none";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      response.innerHTML = `"You make my world brighter just by being in it." <br/>Love you too pondati 😊`;
+      loveImage.style.display = "block";
+    });
+
+    noBtn.addEventListener("mouseover", () => {
+      const button = noBtn;
+      const offsetX = Math.floor(Math.random() * 200) - 100;
+      const offsetY = Math.floor(Math.random() * 200) - 100;
+
+      const rect = button.getBoundingClientRect();
+      const newX = rect.left + offsetX;
+      const newY = rect.top + offsetY;
+      const maxX = window.innerWidth - button.offsetWidth;
+      const maxY = window.innerHeight - button.offsetHeight;
+
+      button.style.position = "absolute";
+      button.style.left = Math.min(Math.max(newX, 0), maxX) + "px";
+      button.style.top = Math.min(Math.max(newY, 0), maxY) + "px";
+    });
+  </script>
+</body>
+</html>
